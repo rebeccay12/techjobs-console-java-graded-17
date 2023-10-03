@@ -1,3 +1,4 @@
+import java.sql.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -77,8 +78,7 @@ public class TechJobs {
         Boolean validChoice = false;
         String[] choiceKeys = new String[choices.size()];
 
-        // Put the choices in an ordered structure so we can
-        // associate an integer with each one
+        // Put the choices in an ordered structure, so we can associate an integer with each one
         int i = 0;
         for (String choiceKey : choices.keySet()) {
             choiceKeys[i] = choiceKey;
@@ -119,7 +119,26 @@ public class TechJobs {
 
     // Print a list of jobs
     private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
+        Scanner scanner = new Scanner(System.in);
+        String userInput = scanner.nextLine();
+        //scanner.close();
 
-        System.out.println("printJobs is not implemented yet");
+    if (userInput != null) {
+        //need to come up wit the variable for user input so the response can include what the user typed when there are no results.
+
+        System.out.println("Search term:\n" + userInput + "\nNo results");
+    } else {
+        for (HashMap<String, String> job : someJobs) {
+            System.out.println("*****");
+            for (Map.Entry<String, String> entry : job.entrySet()) {
+                String key = entry.getKey();
+                String value = entry.getValue();
+                System.out.println(key + ": " + value);
+            }
+            System.out.println("*****\n");
+
+        }
+
+        }
     }
 }
