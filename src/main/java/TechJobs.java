@@ -63,9 +63,9 @@ public class TechJobs {
                 String searchTerm = in.nextLine();
 
                 if (searchField.equals("all")) {
-                    printJobs(JobData.findByValue(searchTerm));
+                    printJobs(JobData.findByValue(searchTerm.toUpperCase()));
                 } else {
-                    printJobs(JobData.findByColumnAndValue(searchField, searchTerm));
+                    printJobs(JobData.findByColumnAndValue(searchField, searchTerm.toUpperCase()));
                 }
             }
         }
@@ -119,14 +119,14 @@ public class TechJobs {
 
     // Print a list of jobs
     private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
-        Scanner scanner = new Scanner(System.in);
-        String userInput = scanner.nextLine();
+//        Scanner scanner = new Scanner(System.in);
+//        String userInput = scanner.nextLine();
         //scanner.close();
 
-    if (userInput != null) {
+    if (someJobs.isEmpty()) {
         //need to come up wit the variable for user input so the response can include what the user typed when there are no results.
 
-        System.out.println("Search term:\n" + userInput + "\nNo results");
+        System.out.print("No results");
     } else {
         for (HashMap<String, String> job : someJobs) {
             System.out.println("*****");

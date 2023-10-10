@@ -72,7 +72,7 @@ public class JobData {
 
             String aValue = row.get(column);
 
-            if (aValue.contains(value)) {
+            if (aValue.toUpperCase().contains(value)) {
                 jobs.add(row);
             }
         }
@@ -94,19 +94,19 @@ public class JobData {
 
 //loop over HashMaps, then loop within key/value pairs of the HashMap with a nested for loop
         for (HashMap<String, String> row : allJobs) {
-            String aValue = row.get(value);
+           // String aValue = row.get(value);
 
             for (Map.Entry<String, String> entry : row.entrySet()) {
                 String key = entry.getKey();
-                String jobValue = entry.getValue();
+                String jobValue = entry.getValue().toUpperCase();
 
                 if (jobValue != null && jobValue.contains(value)) {
                     jobs.add(row);
                     break;
                 }
-                if (row.containsKey(value)) {
-                    jobs.add(row);
-                }
+//                if (row.containsKey(value)) {
+//                    jobs.add(row);
+//                }
             }
         }
 
